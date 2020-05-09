@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Get Timestamp
         id: timestamp
-        run: ::set-output name=timestamp::$(date +'%Y%m%d')
+        run: echo "::set-output name=timestamp::$(date +'%Y%m%d')"
       - name: Print Timestamp
         run: echo ${{steps.timestamp.output.timestamp}}
       - name: Download build artifacts
