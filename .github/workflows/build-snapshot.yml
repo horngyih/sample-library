@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          target: target/*.jar 
+          path: target/*.jar 
   snapshot:
     runs-on: ubuntu-latest
     needs: [build]
