@@ -25,6 +25,11 @@ jobs:
     if: success()
     
     steps:
+      - name: Get Timestamp
+        id: timestamp
+        run: ::set-output name=timestamp::$(date + '%Y%d%m')
+      - name: Print Timestamp
+        run: echo ${{steps.timestamp.output.timestamp}}
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
@@ -33,5 +38,5 @@ jobs:
         uses: meeDamian/github-release@2.0
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          tag: snapshot-${{github.ref}}-${{github.sha}}
+          tag: snapshot-${{steps.timestamp.output.timestamp}}-${{github.id}}
           files: build-artifacts/*.jar
