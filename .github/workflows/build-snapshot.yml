@@ -33,4 +33,5 @@ jobs:
         uses: meeDamian/github-release@2.0
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          files: build-artifacts/*.jar        
+          tag: snapshot-${{github.ref}}-${{github.sha}}
+          files: build-artifacts/*.jar
