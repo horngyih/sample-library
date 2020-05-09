@@ -40,5 +40,5 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           prerelease: true
           gzip: false
-          tag: snapshot-${{steps.timestamp.outputs.timestamp}}-${{github.id}}
+          tag: snapshot-${{steps.timestamp.outputs.timestamp}}-${{github.run_id}}
           files: build-artifacts/*.jar
