@@ -29,7 +29,7 @@ jobs:
         id: timestamp
         run: echo "::set-output name=timestamp::$(date +'%Y%m%d')"
       - name: Print Timestamp
-        run: echo ${{steps.timestamp.output.timestamp}}
+        run: echo ${{steps.timestamp.outputs.timestamp}}
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
@@ -40,5 +40,5 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           prerelease: true
           gzip: false
-          tag: snapshot-${{steps.timestamp.output.timestamp}}-${{github.id}}
+          tag: snapshot-${{steps.timestamp.outputs.timestamp}}-${{github.id}}
           files: build-artifacts/*.jar
